@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Report Card</title>
+</head>
+<style>
+    .container {
+        height: 600px;
+        width: 1400px;
+        margin-top: 50px;
+        margin-left: 36px;
+        padding: 20px;
+        border: 3px solid crimson;
+        border-radius: 30px;
+        background-size: 150% 150%;
+        background-image: url(https://img.freepik.com/premium-photo/notebook-pencil-corner-yellow-background-copy-space-daily-quotes_603656-442.jpg?w=996);
+        background-blend-mode: soft-light;
+        font-size: 30px;
+        color: black;
+        font-family: cursive;
+    }
+
+    .phot {
+        position: absolute;
+        left: 100px;
+        top: 320px;
+    }
+
+    .phot img {
+        width: 200px;
+        border-radius: 10px;
+    }
+
+    button {
+        height: 34px;
+        margin-left: 680px;
+        border-radius: 80px;
+        width: 100px;
+        background-color: rgb(255, 140, 0);
+        color: aliceblue;
+        margin-top: 40px;
+    }
+
+    button:hover {
+        background-color: rgb(220, 77, 20);
+        opacity: 0.9;
+        color: white;
+
+    }
+
+    .table1 {
+        margin-left: 290px;
+    }
+
+
+    .table2 {
+        margin-left: 650px;
+        margin-top: -239px;
+    }
+
+    .table3 {
+        margin-left: 1050px;
+        margin-top: -308px;
+    }
+</style>
+
+<body>
+
+    <div class="phot">
+        <img id="photo" src="photo.png">
+    </div>
+
+
+    <div class="container">
+        <center><img src="https://saitm.ac.in/static/assets/img/logo.png"></center>
+        <h1 style="text-align: center;">
+            <font color="white"><u>Report Card</u></font>
+        </h1>
+
+        <table class="table1" border="0px">
+
+            <tr>
+                <td>Name:</td>
+                <td id="name"></td>
+            </tr>
+
+            <tr>
+                <td>Roll No:</td>
+                <td id="roll"></td>
+            </tr>
+
+            <tr>
+                <td>Branch:</td>
+                <td id="bran"></td>
+            </tr>
+
+            <tr>
+                <td>Section:</td>
+                <td id="sect"></td>
+            </tr>
+
+            <tr>
+                <td>Semester:</td>
+                <td id="seme"></td>
+            </tr>
+
+            <table class="table2" border="0px">
+
+                <tr>
+                    <td>English:</td>
+                    <td id="eng"></td>
+                </tr>
+
+                <tr>
+                    <td>Maths:</td>
+                    <td id="mat"></td>
+                </tr>
+
+                <tr>
+                    <td>Physics:</td>
+                    <td id="phy"></td>
+                </tr>
+
+                <tr>
+                    <td>BEE:</td>
+                    <td id="bee"></td>
+                </tr>
+
+                <tr>
+                    <td>EGD:</td>
+                    <td id="egd"></td>
+                </tr>
+
+            </table>
+
+            <div><button onclick="res()">Result</button></div>
+
+            <table class="table3" border="0px">
+                <tr>
+                    <td>Marks:</td>
+                    <td id="scored"></td>
+                </tr>
+                <tr>
+                    <td>Percentage:</td>
+                    <td id="percent"></td>
+                </tr>
+                <tr>
+                    <td>Grade:</td>
+                    <td id="grade"></td>
+                </tr>
+
+                <tr>
+                    <td>Result:</td>
+                    <td id="result"></td>
+                </tr>
+                <tr>
+                    <td>Remarks:</td>
+                    <td id="remark" style="font-size:20px"></td>
+                </tr>
+            </table>
+
+    </div>
+
+</body>
+
+<script>
+
+    let nam = prompt("Enter The Name of The Student");
+    let rol= prompt("Enter Your Roll No.");
+    let br = prompt("Enter your Branch");
+    let sec = prompt("Enter your Section");
+    let sem = prompt("Enter your Semester");
+
+    document.getElementById("name").innerHTML = nam;
+    document.getElementById("roll").innerHTML = rol;
+    document.getElementById("bran").innerHTML = br;
+    document.getElementById("sect").innerHTML = sec;
+    document.getElementById("seme").innerHTML = sem;
+
+    if (nam.match("Deepak")) { document.getElementById("photo").src = "deepak.png"; }
+    if (nam.match("Deepu")) { document.getElementById("photo").src = "deepak1.png"; }
+    else if (nam.match("Vishal")) { document.getElementById("photo").src = "vishal.png"; }
+    else if (nam.match("Nitish")) { document.getElementById("photo").src = "nitish.png"; }
+    else if (nam.match("Ankur")) { document.getElementById("photo").src = "ankur.png"; }
+    else if (nam.match("Pritesh")) { document.getElementById("photo").src = "pritesh.png"; }
+    else if (nam.match("Nutan")) { document.getElementById("photo").src = "nutan.png"; }
+
+    let a = parseInt(prompt("Enter The Marks in English"));
+    let b = parseInt(prompt("Enter The Marks in Maths"));
+    let c = parseInt(prompt("Enter The Marks in Physics"));
+    let d = parseInt(prompt("Enter The Marks in BEE"));
+    let e = parseInt(prompt("Enter The Marks in EGD"));
+
+    document.getElementById("eng").innerHTML = a;
+    document.getElementById("mat").innerHTML = b;
+    document.getElementById("phy").innerHTML = c;
+    document.getElementById("bee").innerHTML = d;
+    document.getElementById("egd").innerHTML = e;
+
+
+    function res() {
+
+        if (a > 100 || b > 100 || c > 100 || d > 100 || e > 100) { alert("Please enter correct marks") }
+        else {
+
+            let total = parseInt(a) + parseInt(b) + parseInt(c) + parseInt(d) + parseInt(e);
+            let per = total / 5;
+            document.getElementById("scored").innerHTML = total + "/500";
+            document.getElementById("percent").innerHTML = per + "%";
+
+            if (per < 33) {
+                document.getElementById("grade").innerHTML = "F";
+                document.getElementById("remark").innerHTML = "Failed the examination";
+            }
+            else if (per >= 33 && per < 50) {
+                document.getElementById("grade").innerHTML = "E";
+                document.getElementById("remark").innerHTML = "Sirf Pass Huye Ho";
+            }
+            else if (per >= 50 && per < 60) {
+                document.getElementById("grade").innerHTML = "D";
+                document.getElementById("remark").innerHTML = "Could be done better";
+            }
+            else if (per >= 60 && per < 70) {
+                document.getElementById("grade").innerHTML = "C";
+                document.getElementById("remark").innerHTML = "Descent Performance";
+            }
+            else if (per >= 70 && per < 80) {
+                document.getElementById("grade").innerHTML = "B";
+                document.getElementById("remark").innerHTML = "Good Performance";
+            }
+            else if (per >= 80 && per < 90) {
+                document.getElementById("grade").innerHTML = "A";
+                document.getElementById("remark").innerHTML = "Very Good Performance";
+            }
+            else if (per >= 90 && per <= 100) {
+                document.getElementById("grade").innerHTML = "A+";
+                document.getElementById("remark").innerHTML = "Excellent Performance";
+            }
+
+            if (per >= 33) { document.getElementById("result").innerHTML = "<p style='color:green'>Pass</p>" }
+            else { document.getElementById("result").innerHTML = "<p style='color:red'>Fail</p>" }
+
+        }
+    }
+
+</script>
+
+</html>
